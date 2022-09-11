@@ -1,9 +1,12 @@
 package com.domain.services;
 
 import com.domain.models.entities.Product;
+import com.domain.models.entities.Supplier;
 import com.domain.models.repos.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
+
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -34,4 +37,14 @@ public class ProductService {
         return productRepo.findByNameContains(name);
     }
 
+    @PostMapping("/{id}")
+    public void addSuppliers(Supplier supplier, Long productID){
+        Product product = findOne(productID);
+
+        if (product == null){
+            throw new RuntimeException("ID: "+productID+" ora ketemu");
+        }
+        product.getSuppliers().add(supplier);
+        create(product);
+    }
 }

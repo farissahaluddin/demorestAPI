@@ -45,6 +45,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.github.munerf.modelmapper-spring-boot-starter</groupId>
+            <artifactId>modelmapper-spring-boot-starter</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>

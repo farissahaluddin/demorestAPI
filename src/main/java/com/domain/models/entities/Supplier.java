@@ -1,11 +1,16 @@
 package com.domain.models.entities;
 
+import com.fasterxml.jackson.annotation.*;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Table(name = "tbl_supplier")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Supplier implements Serializable {
 
     private static final long serialVersionUID=1L;
@@ -24,6 +29,7 @@ public class Supplier implements Serializable {
     private String email;
 
     @ManyToMany(mappedBy = "suppliers")
+//    @JsonBackReference
     private Set<Product> products;
 
     public Long getId() {
